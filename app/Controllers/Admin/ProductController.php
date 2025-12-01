@@ -9,6 +9,10 @@ class ProductController extends BaseController
 {
     public function index()
     {
-        return view('admin/product/index');
+        $data = [
+            'title' => 'Daftar Product'
+        ]; 
+
+        return view('admin/product/index', $data);
     }
 }

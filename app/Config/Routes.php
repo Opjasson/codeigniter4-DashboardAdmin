@@ -11,4 +11,4 @@ $routes->get('/', 'Home::index');
 $routes->get('dashboard', 'Admin\DashboardController::index');
 
 // Route admin product
-$routes->get('product', 'Admin\ProductController::index');
+$routes->get('daftar-product', 'Admin\ProductController::index');
