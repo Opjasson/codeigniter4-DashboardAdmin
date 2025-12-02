@@ -20,7 +20,7 @@ class ProductController extends BaseController
     {
         $data = [
             'title' => 'Daftar Kategori Product',
-            'daftar_kategori' => $this->KategoriModel->findAll(),
+            'daftar_kategori' => $this->KategoriModel->orderBy('id_kategori', 'DESC')->findAll(),
         ];
 
         return view('admin/product/kategori', $data);
@@ -40,5 +40,21 @@ class ProductController extends BaseController
         $this->KategoriModel->insert($data);
 
         return redirect()->back()->with('success', 'Data Kategori Berhasil Ditambahkan!');
+    }
+
+    public function update($id_kategori)
+    {
+        // ambil slug
+        $slug = url_title($this->request->getPost('nama_kategori'), '-', TRUE);
+
+        // simpan data ke database
+        $data = [
+            'nama_kategori' => esc($this->request->getPost('nama_kategori')),
+            'slug_kategori' => $slug
+        ];
+
+        $this->KategoriModel->update($id_kategori, $data);
+
+        return redirect()->back()->with('success', 'Data Kategori Berhasil Dirubah!');
     }
 }

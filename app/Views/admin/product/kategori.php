@@ -16,11 +16,15 @@
                     Kategori Produk
                 </div>
                 <div class="card-body">
+
+                    <!-- Alert Success -->
                     <?php if (session('success')) : ?>
                         <div class="alert alert-secondary" role="alert">
                             <?= session('success') ?>
                         </div>
                     <?php endif ?>
+                    <!-- End alert -->
+
                     <button type="button" class="btn btn-primary btn-sm mb-3" data-bs-toggle="modal" data-bs-target="#tambahModal">
                         <i class="fas fa-plus"></i> Tambah
                     </button>
@@ -42,7 +46,9 @@
                                     <td><?= $kategori->nama_kategori ?></td>
                                     <td><?= $kategori->tanggal_input ?></td>
                                     <td width="15%">
-                                        <a href="" class="btn btn-success btn-sm"><i class="fas fa-edit"></i> Ubah</a>
+                                        <button type="button" class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#ubahModal<?= $kategori->id_kategori ?>">
+                                            <i class="fas fa-pen"></i> Ubah
+                                        </button>
 
                                         <a href="" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i> Hapus</a>
                                     </td>
@@ -84,5 +90,37 @@
             </div>
         </div>
     </div>
+
+    <!-- Modal Ubah -->
+    <?php foreach ($daftar_kategori as $kategori) : ?>
+        <div class="modal fade" id="ubahModal<?= $kategori->id_kategori ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel"><i class="fas fa-plus"></i> Ubah Kategori Product</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+
+                    <div class="modal-body">
+
+                        <form action="<?= base_url('daftar-kategori/ubah/' . $kategori->id_kategori) ?>" method="post">
+                            <?= csrf_field() ?>
+
+                            <div class="mb-3">
+                                <label for="nama_kategori">Nama Kategori</label>
+                                <input type="text" name="nama_kategori" id="nama_kategori" value="<?= $kategori->nama_kategori ?>" class="form-control" required>
+                            </div>
+
+
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                                <button type="submit" class="btn btn-primary">Ubah</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <?php endforeach ?>
 
     <?= $this->endSection() ?>

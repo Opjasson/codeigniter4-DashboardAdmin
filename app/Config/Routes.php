@@ -18,3 +18,6 @@ $routes->get('daftar-kategori', 'Admin\ProductController::kategori');
 
 // Route admin tambah product kategori
 $routes->post('daftar-kategori/tambah', 'Admin\ProductController::store');
+
+// Route admin ubah product kategori
+$routes->post('daftar-kategori/ubah/(:num)', 'Admin\ProductController::update/$1');
