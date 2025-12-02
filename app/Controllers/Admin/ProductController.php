@@ -11,7 +11,6 @@ class ProductController extends BaseController
     {
         $data = [
             'title' => 'Daftar Product',
-            'daftar_kategori' => $this->KategoriModel->findAll(),
         ];
 
         return view('admin/product/index', $data);
@@ -20,7 +19,8 @@ class ProductController extends BaseController
     public function kategori()
     {
         $data = [
-            'title' => 'Daftar Kategori',
+            'title' => 'Daftar Kategori Product',
+            'daftar_kategori' => $this->KategoriModel->findAll(),
         ];
 
         return view('admin/product/kategori', $data);
