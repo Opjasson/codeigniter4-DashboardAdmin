@@ -19,6 +19,10 @@ class KategoriProduct extends Migration
                 'type'       => 'VARCHAR',
                 'constraint' => '100',
             ],
+            'slug_kategori' => [
+                'type'       => 'VARCHAR',
+                'constraint' => '100',
+            ],
             'tanggal_input' => [
                 'type' => 'DATETIME',
                 'null' => true,

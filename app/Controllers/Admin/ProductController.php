@@ -10,9 +10,10 @@ class ProductController extends BaseController
     public function index()
     {
         $data = [
-            'title' => 'Daftar Product'
-        ]; 
+            'title' => 'Daftar Product',
+            'daftar_kategori' => $this->KategoriModel->findAll(),
+        ];
 
-        return view('admin/product/index', $data);
+        return view('admin/product/kategori', $data);
     }
 }

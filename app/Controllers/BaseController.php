@@ -19,6 +19,11 @@ use Psr\Log\LoggerInterface;
  *
  * For security be sure to declare any new methods as protected or private.
  */
+
+// model kategori
+use App\Models\KategoriModel;
+use Config\App;
+
 abstract class BaseController extends Controller
 {
     /**
@@ -28,6 +33,7 @@ abstract class BaseController extends Controller
      */
     protected $request;
 
+    protected $KategoriModel;
     /**
      * An array of helpers to be loaded automatically upon
      * class instantiation. These helpers will be available
@@ -54,5 +60,7 @@ abstract class BaseController extends Controller
         // Preload any models, libraries, etc, here.
 
         // E.g.: $this->session = service('session');
+
+        $this->KategoriModel = new KategoriModel();
     }
 }
