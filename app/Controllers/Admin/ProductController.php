@@ -25,4 +25,20 @@ class ProductController extends BaseController
 
         return view('admin/product/kategori', $data);
     }
+
+    public function store()
+    {
+        // ambil slug
+        $slug = url_title($this->request->getPost('nama_kategori'), '-', TRUE);
+
+        // simpan data ke database
+        $data = [
+            'nama_kategori' => esc($this->request->getPost('nama_kategori')),
+            'slug_kategori' => $slug
+        ];
+
+        $this->KategoriModel->insert($data);
+
+        return redirect()->back()->with('success', 'Data Kategori Berhasil Ditambahkan!');
+    }
 }

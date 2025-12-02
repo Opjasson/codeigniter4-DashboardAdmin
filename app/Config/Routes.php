@@ -15,3 +15,6 @@ $routes->get('daftar-product', 'Admin\ProductController::index');
 
 // Route admin product kategori
 $routes->get('daftar-kategori', 'Admin\ProductController::kategori');
+
+// Route admin tambah product kategori
+$routes->post('daftar-kategori/tambah', 'Admin\ProductController::store');
