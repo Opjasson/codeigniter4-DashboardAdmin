@@ -12,3 +12,6 @@ $routes->get('dashboard', 'Admin\DashboardController::index');
 
 // Route admin product
 $routes->get('daftar-product', 'Admin\ProductController::index');
+
+// Route admin product kategori
+$routes->get('daftar-kategori', 'Admin\ProductController::kategori');
