@@ -57,4 +57,11 @@ class ProductController extends BaseController
 
         return redirect()->back()->with('success', 'Data Kategori Berhasil Dirubah!');
     }
+
+    public function delete($id_kategori)
+    {
+        $this->KategoriModel->delete($id_kategori);
+
+        return redirect()->back()->with('success', 'Data Kategori Berhasil Dihapus!');
+    }
 }

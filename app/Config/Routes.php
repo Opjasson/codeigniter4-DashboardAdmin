@@ -21,3 +21,6 @@ $routes->post('daftar-kategori/tambah', 'Admin\ProductController::store');
 
 // Route admin ubah product kategori
 $routes->post('daftar-kategori/ubah/(:num)', 'Admin\ProductController::update/$1');
+
+// Route admin hapus product kategori
+$routes->get('daftar-kategori/hapus/(:num)', 'Admin\ProductController::delete/$1');

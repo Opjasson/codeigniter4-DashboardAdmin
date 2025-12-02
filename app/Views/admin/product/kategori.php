@@ -50,7 +50,9 @@
                                             <i class="fas fa-pen"></i> Ubah
                                         </button>
 
-                                        <a href="" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i> Hapus</a>
+                                        <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#hapusModal<?= $kategori->id_kategori ?>">
+                                            <i class="fas fa-trash"></i> Hapus
+                                        </button>
                                     </td>
                                 </tr>
                             <?php endforeach ?>
@@ -123,4 +125,34 @@
         </div>
     <?php endforeach ?>
 
+    <!-- Modal Hapus -->
+    <?php foreach ($daftar_kategori as $kategori) : ?>
+        <div class="modal fade" id="hapusModal<?= $kategori->id_kategori ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header bg-danger">
+                        <h5 class="modal-title text-white" id="exampleModalLabel"><i class="fas fa-plus"></i> Hapus Kategori Product</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+
+                    <div class="modal-body">
+
+                        <form action="<?= base_url('daftar-kategori/hapus/' . $kategori->id_kategori) ?>" method="delete">
+                            <?= csrf_field() ?>
+
+                            <div class="mb-3">
+                                <p>Apakah yakin ingin menghapus kategori <?= $kategori->nama_kategori ?>.?</p>
+                            </div>
+
+
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                                <button type="submit" class="btn btn-danger">Hapus</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <?php endforeach ?>
     <?= $this->endSection() ?>
